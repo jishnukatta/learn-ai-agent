@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# uv
+.uv/
+
+# Secrets — never commit these (we'll add real ones in later stages)
+.env
+*.key
+credentials.json
+*_credentials.json
+
+# OS
+.DS_Store

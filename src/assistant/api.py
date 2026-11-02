@@ -40,7 +40,7 @@ class AskResponse(BaseModel):
 @app.get("/health")
 def health() -> dict:
     """A simple check that the server is up. GET http://.../health -> {"status": "ok"}"""
-    return {"status": "ok", "deployed_via": "github-actions"}
+    return {"status": "ok", "deployed_via": "github-actions", "version": 2}
 
 
 @app.post("/ask", response_model=AskResponse)

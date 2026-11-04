@@ -22,6 +22,8 @@ from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
 from typing_extensions import Annotated, TypedDict
 
+from assistant.rag import search
+
 load_dotenv()
 
 
@@ -44,7 +46,20 @@ def calculate(expression: str) -> str:
         return f"Error: {e}"
 
 
-_tools = [get_current_time, calculate]
+@tool
+def search_notes(question: str) -> str:
+    """Search the user's personal notes about their own AWS project: EC2, IAM roles,
+    security groups, deployment, and pgvector. Use this for any question about the
+    user's own setup. Returns the most relevant notes."""
+    try:
+        rows = search(question, k=3)
+    except Exception as e:  # noqa: BLE001
+        # Return the error as text so the model can tell the user, instead of crashing the graph.
+        return f"Error searching notes: {e}"
+    return "\n\n".join(f"[{source}] {content}" for source, content, _distance in rows)
+
+
+_tools = [get_current_time, calculate, search_notes]
 
 # The model, with the tools "bound" so it knows they exist.
 _model = ChatBedrockConverse(

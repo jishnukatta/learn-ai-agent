@@ -17,7 +17,7 @@ Then send a request (in another terminal):
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from assistant.agent import run_agent
+from assistant.agent_graph import run_agent
 
 # The FastAPI application object. `app` is what uvicorn runs.
 app = FastAPI(title="Learn AI Agent", version="0.1.0")
@@ -50,5 +50,5 @@ def ask(req: AskRequest) -> AskResponse:
     FastAPI parses the incoming JSON into an AskRequest automatically, so
     `req.question` is the user's text. We run the agent and wrap the result.
     """
-    answer = run_agent(req.question, verbose=False)
+    answer = run_agent(req.question)
     return AskResponse(answer=answer)

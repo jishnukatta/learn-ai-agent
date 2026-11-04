@@ -8,7 +8,7 @@ name = "learn-ai-agent"           # the project's name
 version = "0.1.0"                  # our version (we bump this as it grows)
 description = "A personal knowledge assistant — a learning project that grows from a script into a deployed AI agent."
 readme = "README.md"
-requires-python = ">=3.11"        # we require Python 3.11+ (uv will fetch it for us)
+requires-python = ">=3.11,<3.15"  # 3.11 to 3.14; the upper bound keeps uv off versions that lack prebuilt wheels
 
 # Dependencies = external libraries this project needs.
 # Stage 1 adds two:

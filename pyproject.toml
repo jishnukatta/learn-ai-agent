@@ -20,6 +20,12 @@ dependencies = [
     # Stage 3: expose the agent over HTTP
     "fastapi>=0.110.0",    # the web framework — turns functions into URL endpoints
     "uvicorn>=0.29.0",     # the server that actually runs the FastAPI app
+    # Stage 5: the agent framework (replaces our hand-written loop)
+    "langchain>=0.3.0",       # the framework core
+    "langchain-aws>=0.2.0",   # connects LangChain to Amazon Bedrock
+    "langgraph>=0.2.0",       # provides create_react_agent (the prebuilt agent loop)
+    # Stage 7: PostgreSQL access for RAG (pgvector)
+    "psycopg[binary]>=3.1",   # the PostgreSQL driver for Python (binary = no compiler needed)
 ]
 
 # This creates a command named `assistant` that runs the `main` function

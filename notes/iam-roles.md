@@ -1,0 +1,1 @@
+An IAM role gives a machine permissions without storing any access keys on it. The EC2 instance wears a role that allows Systems Manager for connecting and Bedrock for calling the AI models. My laptop uses an IAM user with access keys instead.

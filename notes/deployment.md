@@ -1,0 +1,1 @@
+Pushing to the main branch on GitHub triggers a GitHub Actions workflow. The workflow uses AWS Systems Manager to run git pull, uv sync and a restart of the systemd service on the EC2 instance. The app then serves the new code automatically.

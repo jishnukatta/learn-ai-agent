@@ -1,0 +1,1 @@
+EC2 is a virtual machine in AWS. My app runs on a t3.micro instance in the ap-southeast-2 region. I connect to it with Session Manager, so no SSH key is needed. I stop the instance when I am not using it to save credits.

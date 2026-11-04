@@ -1,0 +1,1 @@
+pgvector adds a vector column type to PostgreSQL. I store Titan embeddings with 1024 dimensions in the documents table and use an hnsw index with cosine distance to find the notes most similar in meaning to a question.

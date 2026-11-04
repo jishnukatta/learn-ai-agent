@@ -1,0 +1,1 @@
+Security groups are firewalls. Port 8000 on the EC2 is open only to my own IP address so I can reach the API. The database port 5432 accepts connections only from the EC2 security group, and the database is not publicly accessible.

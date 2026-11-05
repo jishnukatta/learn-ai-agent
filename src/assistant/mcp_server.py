@@ -64,8 +64,17 @@ def search_notes(question: str) -> str:
 def main() -> None:
     transport = os.environ.get("TRANSPORT", "stdio")
     if transport == "http":
+        from mcp.server.transport_security import TransportSecuritySettings
+
         mcp.settings.host = "0.0.0.0"
         mcp.settings.port = int(os.environ.get("PORT", "8001"))
+        # By default MCP only accepts Host: localhost (DNS-rebinding protection).
+        # When reached over the network (by IP, or behind a reverse proxy) that
+        # check rejects requests with HTTP 421. We disable it here. In production
+        # you'd instead run behind an authenticated proxy (like the wallet MCP's nginx).
+        mcp.settings.transport_security = TransportSecuritySettings(
+            enable_dns_rebinding_protection=False
+        )
         mcp.run(transport="streamable-http")
     else:
         mcp.run(transport="stdio")

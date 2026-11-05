@@ -26,6 +26,8 @@ dependencies = [
     "langgraph>=0.2.0",       # provides create_react_agent (the prebuilt agent loop)
     # Stage 7: PostgreSQL access for RAG (pgvector)
     "psycopg[binary]>=3.1",   # the PostgreSQL driver for Python (binary = no compiler needed)
+    # Stage 8: expose our tools over the MCP protocol
+    "mcp[cli]>=1.0.0,<2.0.0", # the Model Context Protocol server library (FastMCP, v1 API)
 ]
 
 # This creates a command named `assistant` that runs the `main` function
